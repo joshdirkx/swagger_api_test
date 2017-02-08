@@ -51,7 +51,7 @@ module Documentation
       operation route.http_protocol do
         key :description, route.controller_action_parameters[:description]
 
-        route.controller_action_parameters[:parameters].each do |param|
+        route.controller_action_parameters[:parameters]&.each do |param|
           parameter do
             key :name, param[:name]
             key :in, param[:in]
@@ -61,14 +61,14 @@ module Documentation
           end
         end
 
-        route.controller_action_parameters[:responses].each do |resp|
+        route.controller_action_parameters[:responses]&.each do |resp|
           response resp[:status_code] do
             key :description, resp[:description]
 
             code = resp[:status_code]
 
             schema do
-              route.controller_action_parameters[:response_objects][code.to_s][:properties].each do |prop|
+              route.controller_action_parameters[:response_objects][code.to_s][:properties]&.each do |prop|
                 property prop[:name] do
                   key :type, prop[:type]
                 end

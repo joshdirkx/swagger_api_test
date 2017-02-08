@@ -7,6 +7,7 @@ class ApplicationController < ActionController::API
 
   private
 
+  # rename to auto_params or some generic namespace / convention
   def parameters
     params.permit(permitted_params)
   end
