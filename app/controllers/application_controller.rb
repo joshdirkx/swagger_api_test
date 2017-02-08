@@ -1,9 +1,15 @@
 class ApplicationController < ActionController::API
-  protected
 
-  def generate_parameter_list(controller_action)
-    controller_action[:parameters].map do |parameter|
+  private
+  def parameters
+    params.permit(permitted_params)
+  end
+
+  def permitted_params
+    self.class.to_s.sub('Controller', 'Documentation').constantize.new.send(request.parameters['action'])[:parameters].map do |parameter|
       parameter[:name]
     end
   end
+
 end
+

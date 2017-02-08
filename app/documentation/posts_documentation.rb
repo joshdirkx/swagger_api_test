@@ -42,7 +42,7 @@ class PostsDocumentation
       description: 'Index desc',
       parameters: [
         {
-          name: 'something',
+          name: :id,
           in: :path,
           description: 'index something desc',
           required: :true,

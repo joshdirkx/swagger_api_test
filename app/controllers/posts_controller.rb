@@ -15,7 +15,7 @@ class PostsController < ApplicationController
 
   # POST /posts
   def create
-    @post = Post.new(post_params)
+    @post = Post.new(parameters)
 
     if @post.save
       render json: @post, status: :created, location: @post
@@ -26,7 +26,7 @@ class PostsController < ApplicationController
 
   # PATCH/PUT /posts/1
   def update
-    if @post.update(post_params)
+    if @post.update(parameters)
       render json: @post
     else
       render json: @post.errors, status: :unprocessable_entity
@@ -39,13 +39,10 @@ class PostsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_post
-      @post = Post.find(params[:id])
-    end
 
-    # Only allow a trusted parameter "white list" through.
-    def post_params
-      params.fetch(:post, {})
-    end
+  def set_post
+    @post = Post.find(parameters[:id])
+  end
+
 end
+
