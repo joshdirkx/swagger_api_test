@@ -8,7 +8,7 @@ class PostsDocumentation
           name: 'something',
           in: :path,
           description: 'index something desc',
-          required: :true,
+          required: true,
           type: :string
         }
       ],
@@ -45,7 +45,14 @@ class PostsDocumentation
           name: :id,
           in: :path,
           description: 'index something desc',
-          required: :true,
+          required: true,
+          type: :string
+        },
+        {
+          name: :fake,
+          in: :path,
+          description: 'meh',
+          required: true,
           type: :string
         }
       ],
@@ -83,7 +90,7 @@ class PostsDocumentation
           name: 'something',
           in: :path,
           description: 'index something desc',
-          required: :true,
+          required: true,
           type: :string
         }
       ],
@@ -121,7 +128,7 @@ class PostsDocumentation
           name: 'something',
           in: :path,
           description: 'index something desc',
-          required: :true,
+          required: true,
           type: :string
         }
       ],
@@ -159,7 +166,7 @@ class PostsDocumentation
           name: 'something',
           in: :path,
           description: 'index something desc',
-          required: :true,
+          required: true,
           type: :string
         }
       ],
