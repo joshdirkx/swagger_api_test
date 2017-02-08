@@ -24,6 +24,26 @@ module Documentation
     end
   end
 
+  def define_parameter(options = {})
+    {
+      name: options[:name],
+      in: options[:in] || :path,
+      required: options[:required] || false,
+      type: options[:type] || :string,
+      description: options[:description] || "Write a short description for `#{options[:name]}`"
+    }
+  end
+
+  def set_model_response
+    klass = self.class.to_s.sub('Documentation','').singularize.constantize
+    klass.attribute_types.map do |attr, obj_type|
+      {
+        name: attr,
+        type: obj_type.type
+      }
+    end
+  end
+
   private
 
   def build_swagger_path(route)

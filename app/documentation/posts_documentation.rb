@@ -1,4 +1,4 @@
-class PostsDocumentation
+class PostsDocumentation < ApplicationDocumentation
 
   def index
     {
@@ -41,20 +41,7 @@ class PostsDocumentation
     {
       description: 'Index desc',
       parameters: [
-        {
-          name: :id,
-          in: :path,
-          description: 'index something desc',
-          required: true,
-          type: :string
-        },
-        {
-          name: :fake,
-          in: :path,
-          description: 'meh',
-          required: true,
-          type: :string
-        }
+        define_parameter(name: :id), define_parameter(name: :fake)
       ],
       responses: [
         {
@@ -66,16 +53,7 @@ class PostsDocumentation
       response_objects: {
         '200' => {
           name: 'Success schema',
-          properties: [
-            {
-              name: :author,
-              type: :string
-            },
-            {
-              name: :text,
-              type: :string
-            }
-          ]
+          properties: model_response
         }
       }
     }
